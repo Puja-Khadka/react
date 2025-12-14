@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function card({username}) {
+export default function Card({username}) {
   return (
    <div className="flex flex-col items-center p-7 rounded-2xl shadow-black shadow-lg w-64 gap-4 m-auto">
   <div>
