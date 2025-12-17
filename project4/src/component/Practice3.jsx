@@ -4,14 +4,17 @@ function Practice3() {
     const [time,setTime]=useState(new Date().toLocaleTimeString())
     const[show,setShow]=useState(true)
   useEffect(()=>{
-     setInterval(()=>{
+    if(!show){return}
+    const intervalId= setInterval(()=>{
         setTime(new Date().toLocaleTimeString())
         
+        
        
-       
+      
         
     },1000)
-  },[])
+     return()=>clearInterval(intervalId)
+  },[show])
    
   return (
     <div>
