@@ -1,6 +1,9 @@
 import { useEffect } from "react"
 import { useState } from "react"
 import { use } from "react"
+import Practice from "./component/Practice"
+import Practice1 from "./component/practice1"
+import Practice3 from "./component/Practice3"
 
 
 
@@ -27,6 +30,9 @@ function App() {
         <img className="w-60 h-60" src={e.url} alt="cat" key={e.id}/>
       ))}
       </div>
+      <Practice/>
+      <Practice1/>
+      <Practice3/>
       
     </>
   )
