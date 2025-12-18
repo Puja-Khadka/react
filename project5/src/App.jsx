@@ -1,12 +1,15 @@
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 
+import Practice from "./Component/practice"
 
 function App() {
   const [length,setLength]=useState(8)
   const [numberAllowed,setNumberAllowed]=useState(false)
   const [character,setCharacter]=useState(false)
   const [passsword,setPassword]=useState("")
-  
+  // create variable of useRef
+  const passwordRef=useRef(null)
+
   const generatePassword=useCallback(()=>{
      let pass=""
     let str="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
@@ -19,6 +22,11 @@ function App() {
   }
   setPassword(pass)
   },[length,numberAllowed,character,setPassword])
+
+  const copyPassClickBoard=useCallback(()=>{
+    passwordRef.current?.select()
+    window.navigator.clipboard.writeText(passsword)
+  },[passsword])
    
 useEffect(()=>{
   generatePassword()
@@ -32,8 +40,9 @@ useEffect(()=>{
       placeholder="password"
       className="outline-none w-full p-2"
       readOnly
+      ref={passwordRef}
        />
-       <button className="bg-blue-700 py-2 px-3 text-white ">copy</button>
+       <button onClick={copyPassClickBoard} className="bg-blue-700 py-2 px-3 text-white ">copy</button>
       </div>
       <div className="flex gap-x-7">
         <div className="flex gap-x-1items-center"> 
@@ -64,6 +73,7 @@ useEffect(()=>{
         </div>
       </div>
       </div>
+      <Practice/>
     </>
   )
 }
