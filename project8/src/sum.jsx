@@ -16,7 +16,7 @@ const Sum=React.memo(({number})=> {
   
  return(
     <>
-    <h1>sum of 1000</h1>
+    <h1>sum of {number}</h1>
     <p>sum:{total}</p>
     </>
 
