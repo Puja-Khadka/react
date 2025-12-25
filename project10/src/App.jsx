@@ -1,22 +1,29 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useCallback } from 'react'
 
 const Button=React.memo(({onClick,text})=>{
-alert(`Child ${text} render`)
+console.log(`Child ${text} render`);
+
 return <button onClick={onClick}>{text}</button>
 })
 
 function App() {
   const [count1, setCount1] = useState(0)
   const [count2, setCount2] = useState(0)
-
-  const handleClick1=()=>{
-    setCount1(count1+1)
-  }
  
-  const handleClick2=()=>{
+
+  const handleClick1=useCallback(()=>{
+ 
+    setCount1(count1+1)
+    
+  },[count1])
+ 
+  const handleClick2=useCallback(()=>{
+    
     setCount2(count2+1)
-  }
-    alert("Parent rendered");
+  },[count2])
+   console.log("Parent rendered");
+   
   return (
     <>
     <h2>Without useCallback:</h2>
